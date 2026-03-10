@@ -15,6 +15,7 @@
 +  base::Value::List allowlist;
 +  allowlist.Append("chrome://*");
 +  allowlist.Append("chrome-extension://*");
++  allowlist.Append("helium://*");
 +  allowlist.Append("https://odoo-galadio.galadio.local/*");
 +  allowlist.Append("https://odoo-mx.galadio.local/*");
 +  allowlist.Append("https://odoo-rdp.galadio.local/*");

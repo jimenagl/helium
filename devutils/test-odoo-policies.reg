@@ -24,10 +24,11 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLAllowlist]
 "1"="chrome://*"
 "2"="chrome-extension://*"
-"3"="https://odoo-galadio.galadio.local/*"
-"4"="https://odoo-mx.galadio.local/*"
-"5"="https://odoo-rdp.galadio.local/*"
-"6"="https://odoo-uk.galadio.local/*"
+"3"="helium://*"
+"4"="https://odoo-galadio.galadio.local/*"
+"5"="https://odoo-mx.galadio.local/*"
+"6"="https://odoo-rdp.galadio.local/*"
+"7"="https://odoo-uk.galadio.local/*"
 
 ; Open main Odoo instance on startup
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\RestoreOnStartupURLs]
