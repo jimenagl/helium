@@ -1,0 +1,24 @@
+Windows Registry Editor Version 5.00
+
+; =============================================================================
+; Remove Helium / Chromium Odoo Policy Test
+; =============================================================================
+; Removes all policies set by test-odoo-policies.reg
+; Double-click this file (requires admin privileges) to clean up.
+; =============================================================================
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLBlocklist]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLAllowlist]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\RestoreOnStartupURLs]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium]
+"RestoreOnStartup"=-
+"HomepageLocation"=-
+"BrowserGuestModeEnabled"=-
+"BrowserAddPersonEnabled"=-
+"ProfilePickerOnStartupAvailability"=-
+"BrowserSignin"=-
+"SyncDisabled"=-
+"IncognitoModeAvailability"=-
+"DeveloperToolsAvailability"=-
+"EditBookmarksEnabled"=-

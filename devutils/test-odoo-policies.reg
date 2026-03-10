@@ -1,0 +1,45 @@
+Windows Registry Editor Version 5.00
+
+; =============================================================================
+; Helium / Chromium Policy Test - Odoo Instance Restrictions
+; =============================================================================
+; Mirrors policies from: patches/helium/hop/restrict-to-odoo-instances.patch
+;
+; Usage:
+;   1. Double-click this file (requires admin privileges)
+;   2. Open Chrome/Chromium/Edge and go to chrome://policy (or edge://policy)
+;   3. Verify all policies are listed as "Mandatory"
+;   4. Test that non-Odoo URLs are blocked
+;   5. Clean up with remove-odoo-policies.reg when done
+;
+; This sets policies under Chromium. For Edge, duplicate under
+; HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge
+; =============================================================================
+
+; Block all URLs by default
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLBlocklist]
+"1"="*"
+
+; Allow only Galadio Odoo instances
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLAllowlist]
+"1"="https://odoo-galadio.galadio.local/*"
+"2"="https://odoo-mx.galadio.local/*"
+"3"="https://odoo-rdp.galadio.local/*"
+"4"="https://odoo-uk.galadio.local/*"
+
+; Open main Odoo instance on startup
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\RestoreOnStartupURLs]
+"1"="https://odoo-galadio.galadio.local"
+
+; All scalar policies
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium]
+"RestoreOnStartup"=dword:00000004
+"HomepageLocation"="https://odoo-galadio.galadio.local"
+"BrowserGuestModeEnabled"=dword:00000000
+"BrowserAddPersonEnabled"=dword:00000000
+"ProfilePickerOnStartupAvailability"=dword:00000002
+"BrowserSignin"=dword:00000000
+"SyncDisabled"=dword:00000001
+"IncognitoModeAvailability"=dword:00000001
+"DeveloperToolsAvailability"=dword:00000002
+"EditBookmarksEnabled"=dword:00000000
