@@ -20,12 +20,14 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLBlocklist]
 "1"="*"
 
-; Allow only Galadio Odoo instances
+; Allow Galadio Odoo instances and browser internal pages
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLAllowlist]
-"1"="https://odoo-galadio.galadio.local/*"
-"2"="https://odoo-mx.galadio.local/*"
-"3"="https://odoo-rdp.galadio.local/*"
-"4"="https://odoo-uk.galadio.local/*"
+"1"="chrome://*"
+"2"="chrome-extension://*"
+"3"="https://odoo-galadio.galadio.local/*"
+"4"="https://odoo-mx.galadio.local/*"
+"5"="https://odoo-rdp.galadio.local/*"
+"6"="https://odoo-uk.galadio.local/*"
 
 ; Open main Odoo instance on startup
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\RestoreOnStartupURLs]

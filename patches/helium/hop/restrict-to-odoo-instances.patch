@@ -11,8 +11,10 @@
 +  Set(policy_map, policy::key::kURLBlocklist,
 +      POLICY_LEVEL_MANDATORY, base::Value(std::move(blocklist)));
 +
-+  // Allow only Galadio Odoo instances
++  // Allow browser internal pages and Galadio Odoo instances
 +  base::Value::List allowlist;
++  allowlist.Append("chrome://*");
++  allowlist.Append("chrome-extension://*");
 +  allowlist.Append("https://odoo-galadio.galadio.local/*");
 +  allowlist.Append("https://odoo-mx.galadio.local/*");
 +  allowlist.Append("https://odoo-rdp.galadio.local/*");
