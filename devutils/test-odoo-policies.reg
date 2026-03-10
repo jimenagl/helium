@@ -12,16 +12,16 @@ Windows Registry Editor Version 5.00
 ;   4. Test that non-Odoo URLs are blocked
 ;   5. Clean up with remove-odoo-policies.reg when done
 ;
-; This sets policies under Chromium. For Edge, duplicate under
-; HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge
+; This sets policies under Helium (PRODUCT_SHORTNAME from branding).
+; For Chrome/Chromium testing, change "Helium" to "Chromium" in paths below.
 ; =============================================================================
 
 ; Block all URLs by default
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLBlocklist]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Helium\URLBlocklist]
 "1"="*"
 
 ; Allow Galadio Odoo instances and browser internal pages
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLAllowlist]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Helium\URLAllowlist]
 "1"="chrome://*"
 "2"="chrome-extension://*"
 "3"="helium://*"
@@ -31,11 +31,11 @@ Windows Registry Editor Version 5.00
 "7"="https://odoo-uk.galadio.local/*"
 
 ; Open main Odoo instance on startup
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\RestoreOnStartupURLs]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Helium\RestoreOnStartupURLs]
 "1"="https://odoo-galadio.galadio.local"
 
 ; All scalar policies
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Helium]
 "RestoreOnStartup"=dword:00000004
 "HomepageLocation"="https://odoo-galadio.galadio.local"
 "BrowserGuestModeEnabled"=dword:00000000

@@ -7,11 +7,11 @@ Windows Registry Editor Version 5.00
 ; Double-click this file (requires admin privileges) to clean up.
 ; =============================================================================
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLBlocklist]
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\URLAllowlist]
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium\RestoreOnStartupURLs]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Helium\URLBlocklist]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Helium\URLAllowlist]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Helium\RestoreOnStartupURLs]
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Helium]
 "RestoreOnStartup"=-
 "HomepageLocation"=-
 "BrowserGuestModeEnabled"=-
