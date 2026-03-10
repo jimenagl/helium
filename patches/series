@@ -210,6 +210,7 @@ helium/settings/add-search-engine-button.patch
 
 helium/hop/setup.patch
 helium/hop/disable-password-manager.patch
+helium/hop/restrict-to-odoo-instances.patch
 
 helium/ui/layout-constants.patch
 helium/ui/layout-provider.patch

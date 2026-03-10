@@ -1,0 +1,60 @@
+--- a/components/policy/core/common/helium_opinionated_policy_provider.cc
++++ b/components/policy/core/common/helium_opinionated_policy_provider.cc
+@@ -22,6 +22,52 @@ void HopProvider::RefreshPolicies(Policy
+   PolicyBundle bundle;
+   PolicyMap& policy_map = bundle.Get(PolicyNamespace(POLICY_DOMAIN_CHROME, std::string()));
+
++  // === URL RESTRICTIONS ===
++  // Block all URLs by default
++  base::Value::List blocklist;
++  blocklist.Append("*");
++  Set(policy_map, policy::key::kURLBlocklist,
++      POLICY_LEVEL_MANDATORY, base::Value(std::move(blocklist)));
++
++  // Allow only Galadio Odoo instances
++  base::Value::List allowlist;
++  allowlist.Append("https://odoo-galadio.galadio.local/*");
++  allowlist.Append("https://odoo-mx.galadio.local/*");
++  allowlist.Append("https://odoo-rdp.galadio.local/*");
++  allowlist.Append("https://odoo-uk.galadio.local/*");
++  Set(policy_map, policy::key::kURLAllowlist,
++      POLICY_LEVEL_MANDATORY, base::Value(std::move(allowlist)));
++
++  // === STARTUP ===
++  // Open the main Odoo instance on startup (RestoreOnStartup=4 means open URLs)
++  Set(policy_map, policy::key::kRestoreOnStartup,
++      POLICY_LEVEL_MANDATORY, base::Value(4));
++  base::Value::List startup_urls;
++  startup_urls.Append("https://odoo-galadio.galadio.local");
++  Set(policy_map, policy::key::kRestoreOnStartupURLs,
++      POLICY_LEVEL_MANDATORY, base::Value(std::move(startup_urls)));
++  Set(policy_map, policy::key::kHomepageLocation,
++      POLICY_LEVEL_MANDATORY, base::Value("https://odoo-galadio.galadio.local"));
++
++  // === DISABLE PROFILES ===
++  // No guest mode, no adding people, no profile picker
++  Set(policy_map, policy::key::kBrowserGuestModeEnabled,
++      POLICY_LEVEL_MANDATORY, base::Value(false));
++  Set(policy_map, policy::key::kBrowserAddPersonEnabled,
++      POLICY_LEVEL_MANDATORY, base::Value(false));
++  Set(policy_map, policy::key::kProfilePickerOnStartupAvailability,
++      POLICY_LEVEL_MANDATORY, base::Value(2));  // 2 = disabled
++  // Disable sign-in (0 = disabled)
++  Set(policy_map, policy::key::kBrowserSignin,
++      POLICY_LEVEL_MANDATORY, base::Value(0));
++  Set(policy_map, policy::key::kSyncDisabled,
++      POLICY_LEVEL_MANDATORY, base::Value(true));
++
++  // === STRIP BROWSER FEATURES ===
++  // Disable incognito mode (1 = disabled)
++  Set(policy_map, policy::key::kIncognitoModeAvailability,
++      POLICY_LEVEL_MANDATORY, base::Value(1));
++  // Disable developer tools (2 = never allow)
++  Set(policy_map, policy::key::kDeveloperToolsAvailability,
++      POLICY_LEVEL_MANDATORY, base::Value(2));
++  // Disable bookmarks editing
++  Set(policy_map, policy::key::kEditBookmarksEnabled,
++      POLICY_LEVEL_MANDATORY, base::Value(false));
++
+   UpdatePolicy(std::move(bundle));
+ }
